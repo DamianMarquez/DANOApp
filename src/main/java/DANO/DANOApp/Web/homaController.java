@@ -41,6 +41,14 @@ public class homaController {
         return html;
     }
 
+    @RequestMapping("/")
+    public String homeIndex() {
+
+        String html = servicesHomeVar.getHome();
+
+        return html;
+    }
+
     @RequestMapping("/home")
     public String home() {
 
@@ -72,5 +80,24 @@ public class homaController {
 
         return html;
     }
+
+    @RequestMapping("/spShow")
+    public String spotifyShow(@RequestParam("data") String itemid) {
+
+        String html = servicesHomeVar.getSpotifyShow(itemid);
+        linksServices.insertLink(itemid, new Date(System.currentTimeMillis()));
+
+        return html;
+    }
+
+    @RequestMapping("/spShowEpisode")
+    public String spotifyShowEpisode(@RequestParam("data") String itemid) {
+
+        String html = servicesHomeVar.getSpotifyShowEpisode(itemid);
+        linksServices.insertLink(itemid, new Date(System.currentTimeMillis()));
+
+        return html;
+    }
+    
 
 }

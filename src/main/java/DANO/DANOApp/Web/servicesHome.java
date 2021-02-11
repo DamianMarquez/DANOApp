@@ -29,6 +29,14 @@ public  class servicesHome {
     public String getSpotifySong(String id) {
         return getHeader("Sitio de Spotify Song") + armarSpotifySong(id) + getYappa() + getBottom();
     }
+
+    public String getSpotifyShow(String id) {
+        return getHeader("Sitio de Spotify Song") + armarSpotifyShow(id) + getYappa() + getBottom();
+    }
+
+    public String getSpotifyShowEpisode(String id) {
+        return getHeader("Sitio de Spotify Song") + armarSpotifyShowEpisode(id) + getYappa() + getBottom();
+    }
     /**********************************************
      * METODOS PRIVADOS
     **********************************************/
@@ -89,6 +97,20 @@ public  class servicesHome {
         return "<iframe width=\" 300  \" height=\" 380 \" src=\"https://open.spotify.com/embed/track/" + codigoSong
                 + "\" frameborder=\"0\"        allowtransparency=\"true\" allow=\"encrypted-media\"></iframe>";
     }
+
+    private String armarSpotifyShow(String id) {
+        String codigoSong = id;
+        return "<iframe width=\" 100%  \" height=\" 232 \" src=\"https://open.spotify.com/embed-podcast/show/" + codigoSong
+                + "\" frameborder=\"0\"        allowtransparency=\"true\" allow=\"encrypted-media\"></iframe>";
+    }
+
+    private String armarSpotifyShowEpisode(String id) {
+        String codigoSong = id;
+        return "<iframe width=\" 100%  \" height=\" 232 \" src=\"https://open.spotify.com/embed-podcast/episode/"
+                + codigoSong
+                + "\" frameborder=\"0\"        allowtransparency=\"true\" allow=\"encrypted-media\"></iframe>";
+    }
+    
 
     
 }
