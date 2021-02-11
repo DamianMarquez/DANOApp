@@ -48,7 +48,7 @@ public  class servicesHome {
 
     private String armarIFrame(String link){
 
-        return "<div><iframe width=\"100%\" height=\"86%\" src=\""+link+"\" frameborder=\"0\" onLoad=\"alert($(this).attr('src'));\" ></iframe></div>"
+        return "<div><iframe width=\"100%\" height=\"86%\" src=\""+link+"\" frameborder=\"0\" ></iframe></div>"
                 + getYappa() + getBottom();
 
     }
