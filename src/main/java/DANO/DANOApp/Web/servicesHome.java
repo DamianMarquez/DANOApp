@@ -66,7 +66,7 @@ public  class servicesHome {
 
     private String getBottom(){
 
-        String modal = "<input type=\"image\" width=\"45\" height=\"45\" data-toggle=\"modal\" data-target=\"#myHelpModal\" src=\"/images/help.png\"></input></div><div><div class=\"modal fade\" id=\"myHelpModal\" role=\"dialog\"><div class=\"modal-dialog modal-lg\"><div class=\"modal-content\"><div class=\"modal-header\"> <button type=\"button\" class=\"close\" data-dismiss=\"modal\">&times;</button><h4 class=\"modal-title\">How to use</h4></div><div class=\"modal-body\"><h1>Copy the link of the YouTube video, Spotify Album or Song, or just a WebPage</h1></div><div class=\"modal-footer\"> <button type=\"button\" class=\"btn btn-default\" data-dismiss=\"modal\">Close</button></div></div></div></div></div>";
+        String modal = "<input type=\"image\" width=\"45\" height=\"45\" data-toggle=\"modal\" data-target=\"#myHelpModal\" src=\"/images/help.png\"></input></div><div><div class=\"modal fade\" id=\"myHelpModal\" role=\"dialog\"><div class=\"modal-dialog modal-lg\"><div class=\"modal-content\"><div class=\"modal-header\"> <button type=\"button\" class=\"close\" data-dismiss=\"modal\">&times;</button><h4 class=\"modal-title\">How to use</h4></div><div class=\"modal-body\"><h1>Copy the link of the YouTube video, Spotify Album or Song or Podcast or Episode, or just a WebPage URL</h1></div><div class=\"modal-footer\"> <button type=\"button\" class=\"btn btn-default\" data-dismiss=\"modal\">Close</button></div></div></div></div></div>";
 
         return armarInput()+modal+"<script src=\"/js/jquery.js\"></script> <script src=\"/js/javascript.js\"></script> </body></html>";
     }
