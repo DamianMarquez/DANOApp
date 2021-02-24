@@ -1,5 +1,6 @@
 package DANO.DANOApp.Web;
 
+import DANO.DANOApp.Web.AccesoADB.Links.*;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.sql.Date;
@@ -23,6 +24,24 @@ public class homaController {
         this.linksServices = linksServices;
     }
 
+
+    //HOME DE LA WEB PAGE
+    @RequestMapping("/")
+    public String homeIndex() {
+        return home();
+    }
+
+    // HOME DE LA WEB PAGE
+    @RequestMapping("/home")
+    public String home() {
+
+        String html = servicesHomeVar.getHome();
+
+        return html;
+    }
+
+
+    //ARMADO DE PAGINA DE YOUTUBE
 	@RequestMapping("/video")
 	public String video(@RequestParam("data") String itemid) {
 
@@ -32,6 +51,7 @@ public class homaController {
         return html;
 	}
 
+    //ARMADI DE POGINA GENERICA WEB
     @RequestMapping("/web")
     public String web(@RequestParam("data") String url) {
 
@@ -41,28 +61,16 @@ public class homaController {
         return html;
     }
 
-    @RequestMapping("/")
-    public String homeIndex() {
 
-        String html = servicesHomeVar.getHome();
-
-        return html;
-    }
-
-    @RequestMapping("/home")
-    public String home() {
-
-        String html = servicesHomeVar.getHome();
-
-        return html;
-    }
-
+    // PAGINA PARA PROBAR
     @RequestMapping("/prueba")
     public String prueba(){
         List<Links> links = (List<Links>) linksServices.getAllFromLink();
         return links.toString();
     }
 
+
+    //ARMADO DE PAGINA DE SPOTIFY - ALBUM
     @RequestMapping("/spAlbum")
     public String spotifyAlbum(@RequestParam("data") String itemid) {
 
@@ -72,6 +80,7 @@ public class homaController {
         return html;
     }
 
+    // ARMADO DE PAGINA DE SPOTIFY - CANCION
     @RequestMapping("/spSong")
     public String spotifySong(@RequestParam("data") String itemid) {
 
@@ -81,6 +90,7 @@ public class homaController {
         return html;
     }
 
+    // ARMADO DE PAGINA DE SPOTIFY - SHOW DE PODCAST
     @RequestMapping("/spShow")
     public String spotifyShow(@RequestParam("data") String itemid) {
 
@@ -90,6 +100,7 @@ public class homaController {
         return html;
     }
 
+    // ARMADO DE PAGINA DE SPOTIFY - EPISODIO DEL PODCAST
     @RequestMapping("/spShowEpisode")
     public String spotifyShowEpisode(@RequestParam("data") String itemid) {
 

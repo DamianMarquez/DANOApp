@@ -83,8 +83,6 @@ public  class servicesHome {
 
     private String armarSpotifyAlbum(String id) {
         String codigoAlbum = id;
-        // <iframe src="https://open.spotify.com/embed/album/6SSSF9Y6MiPdQoxqBptrR2"
-        // width="300" height="380" frameborder="0"
         return "<iframe width=\" 300  \" height=\" 380 \" src=\"https://open.spotify.com/embed/album/"
                 + codigoAlbum
                 + "\" frameborder=\"0\"        allowtransparency=\"true\" allow=\"encrypted-media\"></iframe>";
@@ -92,8 +90,6 @@ public  class servicesHome {
 
     private String armarSpotifySong(String id) {
         String codigoSong = id;
-        // <iframe src="https://open.spotify.com/embed/album/6SSSF9Y6MiPdQoxqBptrR2"
-        // width="300" height="380" frameborder="0"
         return "<iframe width=\" 300  \" height=\" 380 \" src=\"https://open.spotify.com/embed/track/" + codigoSong
                 + "\" frameborder=\"0\"        allowtransparency=\"true\" allow=\"encrypted-media\"></iframe>";
     }

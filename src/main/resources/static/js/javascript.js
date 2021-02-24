@@ -36,7 +36,6 @@ $("#btnEnviar").click(function() {
                   var id2 = temporal[0].split("episode")[1].split("/")[1];
                   window.location.href = urlLocal + "/spShowEpisode?data=" + id2;            
                }else{
-                  var link = $("#url").val();
                   window.location.href = urlLocal + "/web?data=" + link;
                }
             }
@@ -44,8 +43,7 @@ $("#btnEnviar").click(function() {
          
       }
    }
-
-   
+      
    });
 
    $("#btnHome").click(function () {

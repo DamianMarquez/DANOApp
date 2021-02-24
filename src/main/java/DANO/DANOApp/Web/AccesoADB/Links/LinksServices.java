@@ -1,4 +1,4 @@
-package DANO.DANOApp.Web;
+package DANO.DANOApp.Web.AccesoADB.Links;
 
 import java.sql.Date;
 import java.util.List;

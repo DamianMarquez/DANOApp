@@ -1,4 +1,4 @@
-package DANO.DANOApp.Web;
+package DANO.DANOApp.Web.AccesoADB.Links;
 
 import java.sql.Date;
 import java.util.List;
@@ -9,8 +9,6 @@ import org.springframework.stereotype.Service;
 @Service
 public interface ILinksServices {
     
-    //List<Links> findByIdGenerico(Integer id);
-
     List<Links> getOneFromLink(String url);
 
     List<Links> getAllFromLink();
