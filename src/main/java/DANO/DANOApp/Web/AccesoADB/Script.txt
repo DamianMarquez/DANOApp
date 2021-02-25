@@ -1,0 +1,99 @@
+-- Table: public.links
+
+-- DROP TABLE public.links;
+
+CREATE TABLE public.links
+(
+    id bigint NOT NULL GENERATED ALWAYS AS IDENTITY ( INCREMENT 1 START 1 MINVALUE 1 MAXVALUE 9223372036854775807 CACHE 1 ),
+    url text COLLATE pg_catalog."default" NOT NULL,
+    contador bigint NOT NULL,
+    aud_date timestamp with time zone,
+    url_completa text COLLATE pg_catalog."default",
+    CONSTRAINT links_pkey PRIMARY KEY (id)
+)
+
+TABLESPACE pg_default;
+
+ALTER TABLE public.links
+    OWNER to postgres;
+
+-- Table: public.usuarios
+
+-- DROP TABLE public.usuarios;
+
+CREATE TABLE public.usuarios
+(
+    id bigint NOT NULL GENERATED ALWAYS AS IDENTITY ( INCREMENT 1 START 1 MINVALUE 1 MAXVALUE 9223372036854775807 CACHE 1 ),
+    mail text COLLATE pg_catalog."default" NOT NULL,
+    password text COLLATE pg_catalog."default" NOT NULL,
+    alias text COLLATE pg_catalog."default" NOT NULL,
+    CONSTRAINT usuarios_pkey PRIMARY KEY (id)
+)
+
+TABLESPACE pg_default;
+
+ALTER TABLE public.usuarios
+    OWNER to postgres;
+-- PROCEDURE: public.insert_links(text, timestamp with time zone, bigint, text)
+
+-- DROP PROCEDURE public.insert_links(text, timestamp with time zone, bigint, text);
+
+CREATE OR REPLACE PROCEDURE public.insert_links(
+	a text,
+	b timestamp with time zone,
+	c bigint,
+	d text)
+LANGUAGE 'sql'
+AS $BODY$
+INSERT INTO public.links(
+	url, aud_date,contador,url_completa)
+	VALUES (a, b,c,d);
+$BODY$;
+
+-- PROCEDURE: public.insert_usuarios(text, text, text)
+
+-- DROP PROCEDURE public.insert_usuarios(text, text, text);
+
+CREATE OR REPLACE PROCEDURE public.insert_usuarios(
+	a text,
+	b text,
+	c text)
+LANGUAGE 'sql'
+AS $BODY$
+INSERT INTO public.usuarios(
+	mail, password,alias)
+	VALUES (a, b,c);
+$BODY$;
+
+-- PROCEDURE: public.update_links(text, timestamp with time zone, bigint, text)
+
+-- DROP PROCEDURE public.update_links(text, timestamp with time zone, bigint, text);
+
+CREATE OR REPLACE PROCEDURE public.update_links(
+	a text,
+	b timestamp with time zone,
+	c bigint,
+	d text)
+LANGUAGE 'sql'
+AS $BODY$
+update public.links
+SET
+aud_date = b,contador=c, url_completa=d
+WHERE url = a;
+$BODY$;
+
+-- PROCEDURE: public.update_usuarios(text, text, text)
+
+-- DROP PROCEDURE public.update_usuarios(text, text, text);
+
+CREATE OR REPLACE PROCEDURE public.update_usuarios(
+	a text,
+	b text,
+	c text)
+LANGUAGE 'sql'
+AS $BODY$
+update public.usuarios
+SET
+password = b,alias=c
+WHERE mail = a;
+$BODY$;
