@@ -31,11 +31,15 @@ public class Links {
     @Column(name = "contador")
     private Integer contador;
 
+    @Column(name = "url_completa")
+    private String url_completa;
+
     public Links(){
     }
 
-    public Links(String url){
+    public Links(String url, String url_completa){
         this.url = url;
+        this.url_completa = url_completa;
         this.aud_date = new Date(System.currentTimeMillis());
     }
 
@@ -81,6 +85,7 @@ public class Links {
         hash = 79 * hash + Objects.hashCode(this.url);
         hash = 79 * hash + Objects.hashCode( this.aud_date);
         hash = 79 * hash + Objects.hashCode(this.contador);
+        hash = 79 * hash + Objects.hashCode(this.url_completa);
         return hash;
     }
 
@@ -105,6 +110,9 @@ public class Links {
         if (!Objects.equals(this.contador, other.contador)) {
             return false;
         }
+        if (!Objects.equals(this.url_completa, other.url_completa)) {
+            return false;
+        }
         return Objects.equals(this.id, other.id);
     }
     
@@ -113,7 +121,7 @@ public class Links {
 
         StringBuilder builder = new StringBuilder();
         builder.append("Link{id=").append(id).append(", URL=").append(url).append(", Aud_Date=").append(aud_date).append(", contador=").append(contador)
-                .append("}");
+                .append(", URL Completa=").append(url_completa).append("}");
 
         return builder.toString();
     }

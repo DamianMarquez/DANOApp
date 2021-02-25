@@ -23,13 +23,14 @@ public interface LinksRepository extends CrudRepository<Links, Integer> {
     List<Links> getOneFromLink(String url);
 
     @Modifying
-    @Query(value = "CALL insert_links(:url,:aud_date,:contador)", nativeQuery = true)
+    @Query(value = "CALL insert_links(:url,:aud_date,:contador,:url_completa)", nativeQuery = true)
     @Transactional
-    void insertLink(@Param("url") String url, @Param("aud_date") Date aud_date, @Param("contador") Integer contador);
+    void insertLink(@Param("url") String url, @Param("aud_date") Date aud_date, @Param("contador") Integer contador,@Param("url_completa") String url_completa);
 
 
     @Modifying
-    @Query(value = "CALL update_links(:url,:aud_date,:contador)", nativeQuery = true)
+    @Query(value = "CALL update_links(:url,:aud_date,:contador,:url_completa)", nativeQuery = true)
     @Transactional
-    void updateLink(@Param("url") String url, @Param("aud_date") Date aud_date, @Param("contador") Integer contador);
+    void updateLink(@Param("url") String url, @Param("aud_date") Date aud_date, @Param("contador") Integer contador,
+            @Param("url_completa") String url_completa);
 }

@@ -1,7 +1,12 @@
-package DANO.DANOApp.Web;
+package DANO.DANOApp.Web.Controllers;
 
-import DANO.DANOApp.Web.AccesoADB.Links.*;
+import DANO.DANOApp.Web.AccesoADB.Links.ILinksServices;
+import DANO.DANOApp.Web.AccesoADB.Links.Links;
+
 import org.springframework.web.bind.annotation.RestController;
+
+
+import DANO.DANOApp.Web.Services.*;
 
 import java.sql.Date;
 import java.util.List;
@@ -11,7 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 @RestController
-public class homaController {
+public class homeController {
 
     @Autowired
     ILinksServices linksServices;
@@ -24,8 +29,7 @@ public class homaController {
         this.linksServices = linksServices;
     }
 
-
-    //HOME DE LA WEB PAGE
+    // HOME DE LA WEB PAGE
     @RequestMapping("/")
     public String homeIndex() {
         return home();
@@ -40,42 +44,48 @@ public class homaController {
         return html;
     }
 
+    // ARMADO DE PAGINA DE YOUTUBE
+    @RequestMapping("/makeURL")
+    public String makeURL(@RequestParam("data") String url) {
+        String html = servicesHomeVar.getPrincipalPage(url);
+        linksServices.insertLink(html, new Date(System.currentTimeMillis()), url, true);
+        return html;
+    }
 
-    //ARMADO DE PAGINA DE YOUTUBE
-	@RequestMapping("/video")
-	public String video(@RequestParam("data") String itemid) {
+    // ARMADO DE PAGINA DE YOUTUBE
+    @RequestMapping("/video")
+    public String video(@RequestParam("data") String itemid) {
 
         String html = servicesHomeVar.getVideo(itemid);
-        linksServices.insertLink(itemid, new Date(System.currentTimeMillis()));
+        linksServices.insertLink("/video?data=" + itemid, new Date(System.currentTimeMillis()), itemid, false);
+        System.out.println(itemid);
 
         return html;
-	}
+    }
 
-    //ARMADI DE POGINA GENERICA WEB
+    // ARMADI DE POGINA GENERICA WEB
     @RequestMapping("/web")
     public String web(@RequestParam("data") String url) {
 
         String html = servicesHomeVar.getFrame(url);
-        linksServices.insertLink(url, new Date(System.currentTimeMillis()));
+        linksServices.insertLink("/web?data=" + url, new Date(System.currentTimeMillis()), url, false);
 
         return html;
     }
 
-
     // PAGINA PARA PROBAR
     @RequestMapping("/prueba")
-    public String prueba(){
+    public String prueba() {
         List<Links> links = (List<Links>) linksServices.getAllFromLink();
         return links.toString();
     }
 
-
-    //ARMADO DE PAGINA DE SPOTIFY - ALBUM
+    // ARMADO DE PAGINA DE SPOTIFY - ALBUM
     @RequestMapping("/spAlbum")
     public String spotifyAlbum(@RequestParam("data") String itemid) {
 
         String html = servicesHomeVar.getSpotifyAlbum(itemid);
-        linksServices.insertLink(itemid, new Date(System.currentTimeMillis()));
+        linksServices.insertLink("/spAlbum?data=" + itemid, new Date(System.currentTimeMillis()), itemid, false);
 
         return html;
     }
@@ -85,7 +95,7 @@ public class homaController {
     public String spotifySong(@RequestParam("data") String itemid) {
 
         String html = servicesHomeVar.getSpotifySong(itemid);
-        linksServices.insertLink(itemid, new Date(System.currentTimeMillis()));
+        linksServices.insertLink("/spSong?data=" + itemid, new Date(System.currentTimeMillis()), itemid, false);
 
         return html;
     }
@@ -95,7 +105,7 @@ public class homaController {
     public String spotifyShow(@RequestParam("data") String itemid) {
 
         String html = servicesHomeVar.getSpotifyShow(itemid);
-        linksServices.insertLink(itemid, new Date(System.currentTimeMillis()));
+        linksServices.insertLink("/spShow?data=" + itemid, new Date(System.currentTimeMillis()), itemid, false);
 
         return html;
     }
@@ -105,10 +115,9 @@ public class homaController {
     public String spotifyShowEpisode(@RequestParam("data") String itemid) {
 
         String html = servicesHomeVar.getSpotifyShowEpisode(itemid);
-        linksServices.insertLink(itemid, new Date(System.currentTimeMillis()));
+        linksServices.insertLink("/spShowEpisode?data=" + itemid, new Date(System.currentTimeMillis()), itemid, false);
 
         return html;
     }
-    
 
 }
