@@ -48,6 +48,7 @@ public class homeController {
     @RequestMapping("/makeURL")
     public String makeURL(@RequestParam("data") String url) {
         String html = servicesHomeVar.getPrincipalPage(url);
+        System.out.println("URL: " + url);
         linksServices.insertLink(html, new Date(System.currentTimeMillis()), url, true);
         return html;
     }
@@ -67,8 +68,9 @@ public class homeController {
     @RequestMapping("/web")
     public String web(@RequestParam("data") String url) {
 
-        String html = servicesHomeVar.getFrame(url);
-        linksServices.insertLink("/web?data=" + url, new Date(System.currentTimeMillis()), url, false);
+        String url_completa = linksServices.insertLinkWeb("/web?data=" + url, new Date(System.currentTimeMillis()), url, false);
+        String html = servicesHomeVar.getFrame(url_completa);
+        
 
         return html;
     }

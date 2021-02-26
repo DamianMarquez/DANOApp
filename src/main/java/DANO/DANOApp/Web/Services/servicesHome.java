@@ -69,7 +69,12 @@ public class servicesHome {
             id2 = temporal[0].split("episode")[1].split("/")[1];
             return "/spShowEpisode?data=" + id2;
         }
-        return "/web?data=" + link;
+
+        temporal = link.split("//");
+        System.out.println(temporal);
+        System.out.println(temporal[1]);
+        
+        return "/web?data=" + temporal[1];
     }
 
     /**********************************************

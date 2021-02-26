@@ -126,6 +126,14 @@ public class Links {
         return builder.toString();
     }
 
+    public String getUrl_completa() {
+        return url_completa;
+    }
+
+    public void setUrl_completa(String url_completa) {
+        this.url_completa = url_completa;
+    }
+
 
 
 }

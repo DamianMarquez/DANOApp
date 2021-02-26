@@ -17,4 +17,7 @@ public interface ILinksServices {
 
     void updateLink(@Param("url") String url, @Param("aud_date") Date aud_date, @Param("contador") Integer contador,
             @Param("url_completa") String url_completa);
+
+        String insertLinkWeb(@Param("url") String url, @Param("aud_date") Date aud_date,@Param("url_completa") String url_completa,
+            boolean esCreadorDeURL);
 }
