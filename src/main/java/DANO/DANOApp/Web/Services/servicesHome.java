@@ -1,10 +1,20 @@
 package DANO.DANOApp.Web.Services;
 
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import DANO.DANOApp.Web.AccesoADB.Links.Links;
+import DANO.DANOApp.Web.AccesoADB.Links.LinksRepository;
 
 @Service
 public class servicesHome {
 
+    
+    @Autowired
+    private LinksRepository repository;
+    
     /**********************************************
      * METODOS PUBLICOS
      **********************************************/
@@ -39,7 +49,8 @@ public class servicesHome {
         return getHeader("Sitio de Spotify Song") + armarSpotifyShowEpisode(id) + getYappa() + getBottom();
     }
 
-    public String getPrincipalPage(String link) {
+    /*
+    public String getPrincipalPage(Link link) {
 
         String[] temporal;
         String id2;
@@ -71,11 +82,17 @@ public class servicesHome {
         }
 
         temporal = link.split("//");
-        System.out.println(temporal);
-        System.out.println(temporal[1]);
-        
-        return "/web?data=" + temporal[1];
+                
+        String urlWeb =  "/web?data=" + temporal[1];
+
+        List<Links> lista = repository.getOneFromLink(urlWeb);
+
+        if(lista.size() == 0){
+            return null;
+        }
+        return "/web?data=" + lista.get(0).getId();
     }
+    */
 
     /**********************************************
      * METODOS PRIVADOS

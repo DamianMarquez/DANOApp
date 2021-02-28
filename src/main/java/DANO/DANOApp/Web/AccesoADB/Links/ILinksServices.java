@@ -11,13 +11,23 @@ public interface ILinksServices {
     
     List<Links> getOneFromLink(String url);
 
+    List<Links> getOneFromLinkId(@Param("url") String url);
+
     List<Links> getAllFromLink();
-    void insertLink(@Param("url") String url, @Param("aud_date") Date aud_date,@Param("url_completa") String url_completa,
-            boolean esCreadorDeURL);
+    
+//    Links insertLink(@Param("url") String url, @Param("aud_date") Date aud_date,@Param("url_completa") String url_completa,
+            //boolean esCreadorDeURL,@Param("tipo") Integer tipo);
+
+    Links insertLinkCompleta(@Param("url") String url);
+
+    Links insertLinkId(@Param("url") String url);
+    
 
     void updateLink(@Param("url") String url, @Param("aud_date") Date aud_date, @Param("contador") Integer contador,
             @Param("url_completa") String url_completa);
 
-        String insertLinkWeb(@Param("url") String url, @Param("aud_date") Date aud_date,@Param("url_completa") String url_completa,
-            boolean esCreadorDeURL);
+            /*
+    Links insertLinkWeb(@Param("url") String url, @Param("aud_date") Date aud_date,@Param("url_completa") String url_completa,
+        boolean esCreadorDeURL, @Param("tipo") Integer tipo);
+        */
 }
